@@ -6,17 +6,27 @@ public class AspectRatioManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		Object [] objs = FindObjectsOfType (typeof(GameObject));
-		print( Screen.height + " , " + Screen.width ) ; 
-		double ar = Screen.width / Screen.height ; 
+		float canvasWidth = this.GetComponent<RectTransform>().rect.width ; 
+		float canvasHeight = this.GetComponent<RectTransform>().rect.height ; 
+		float currentScreenWidth = 512f ;
+		float currentScreenHeight = 320f ; 
+		print( canvasWidth +"," +canvasHeight );
+		foreach( Transform obj in transform ){
 
-		foreach( GameObject obj in objs ){
+			if( !("Boundary".Equals(obj.tag)) && !( "SlidingButton" ).Equals( obj.tag ) ){
 
-			Vector3 myLocation = obj.transform.localPosition ; 
-			//print(obj.name + " :: " + myLocation) ; 
-			
+				Vector3 myLocation = obj.transform.localPosition ; 
+				float objWidth = obj.GetComponent<RectTransform>().rect.width ; 
+				float objHeight = obj.GetComponent<RectTransform>().rect.height ; 
+				print( obj.name + "::" + myLocation ) ; 
+				obj.transform.localPosition = new Vector3( ((myLocation.x)/currentScreenWidth) * ( canvasWidth ) ,((myLocation.y)/currentScreenHeight) * ( canvasHeight ) , 0f  ); 
+				//obj.transform.localScale *= canvasWidth/currentScreenWidth ; 
+				print( obj.name+ "::::::" + new Vector3( ((myLocation.x)/currentScreenWidth) * ( canvasWidth ) ,((myLocation.y)/currentScreenHeight) * ( canvasHeight ) , 0f  ) ); 
+
+			}
 
 		}
+
 
 	}
 	
