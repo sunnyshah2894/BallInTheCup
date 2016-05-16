@@ -10,19 +10,23 @@ public class TakeUserInput : MonoBehaviour {
 	private Camera camera ;
 	private Vector3 myball ;
 
-	private float power = 5f ;
+	private float power = 200f ;
 
 	private Vector2 myTouchPos ;
 	private Vector2 ballVec2dPos ;
 	private Vector2 difference ; 
 	private double maxMagnitude ;
 
+	private GameObject MyCanvas ; 
+
 	void Start(){
 
 		rigidBody = GetComponent<Rigidbody2D>() ; 
+		MyCanvas = GameObject.FindGameObjectWithTag( "MyCanvas" ) ;
 		camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() ; 
 		hasUserTouched = false ;
 		maxMagnitude = new Vector2( Screen.width , Screen.height ).magnitude ; 
+
 
 	}
 
@@ -40,7 +44,7 @@ public class TakeUserInput : MonoBehaviour {
 
 				rigidBody.isKinematic = false ;
 				myTouchPos = new Vector2( touch.position.x , touch.position.y ) ;
-				ballVec2dPos = new Vector2( myball.x , myball.y ) ;
+				ballVec2dPos = new Vector2( this.transform.position.x , this.transform.position.y ) ;
 				difference = ( myTouchPos - ballVec2dPos ) ; 
 				float scaleFactor = (float)((difference.magnitude)/maxMagnitude)*power ; 
 				rigidBody.AddForce( difference*scaleFactor ) ; 
@@ -54,11 +58,11 @@ public class TakeUserInput : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		if(hasUserTouched && false){
-			print("new ");
+		if(hasUserTouched ){
+			print(" ::: " + this.transform.position);
 			var centeredStyle = GUI.skin.GetStyle("Label");
 			centeredStyle.alignment = TextAnchor.UpperCenter;
-			GUI.Label(new Rect(Screen.width/2-50, Screen.height/2-25, 100, 50),""+touch.position.x+" , " + touch.position.y + " ball : "+ myball.x +","+ myball.y );
+			GUI.Label(new Rect(Screen.width/2-50, Screen.height/2-25, 100, 50),""+touch.position.x+" , " + touch.position.y + " ball : "+ this.transform.position.x +","+ this.transform.position.y );
 
 		}
 	}
