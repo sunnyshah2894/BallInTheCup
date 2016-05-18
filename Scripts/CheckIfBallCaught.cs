@@ -9,12 +9,13 @@ public class CheckIfBallCaught : MonoBehaviour {
 
 	private bool HasBallEntered ; 
 	private long timeEntered ;
-
+	private int fontSize ;
 	void Start(){
 		
 		ball = GameObject.FindGameObjectWithTag( "Player" );
 		HasBallEntered = false ; 
 		timeEntered = 0 ;
+		fontSize = (int)(MyCanvas.canvasWidth/100f)*6 ;
 			
 	}
 
@@ -53,7 +54,7 @@ public class CheckIfBallCaught : MonoBehaviour {
 
 			var centeredStyle = GUI.skin.GetStyle("Label");
 			centeredStyle.alignment = TextAnchor.UpperCenter;
-			centeredStyle.fontSize = 30 ; 
+			centeredStyle.fontSize = fontSize ; 
 
 			if( timeEntered < 150 )
 				GUI.Label(new Rect(Screen.width/2-50, Screen.height/4, 100, 50),""+ (timeEntered/50 + 1) );

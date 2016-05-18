@@ -30,6 +30,7 @@ public class LevelCompletePanel : MonoBehaviour {
 	public static void resizeLevelCompletePanel(){
 		print( "canvas width" + MyCanvas.canvasWidth*2 ) ; 
 		levelCompletePanelObj.transform.localPosition = new Vector3( MyCanvas.canvasWidth * 2 , 0 , 0f ) ;
+		//levelCompletePanelObj.GetComponent<RectTransform>().sizeDelta = new Vector3( MyCanvas.canvasWidth*( 0.7 ) , MyCanvas.canvasHeight*( 0.7 ) ) ; 
 		print( levelCompletePanelObj.transform.position ) ; 
 	}
 

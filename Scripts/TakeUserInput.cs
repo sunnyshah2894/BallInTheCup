@@ -10,7 +10,7 @@ public class TakeUserInput : MonoBehaviour {
 	private Camera camera ;
 	private Vector3 myball ;
 
-	private float power = 200f ;
+	private float power = 600f ;
 
 	private Vector2 myTouchPos ;
 	private Vector2 ballVec2dPos ;
@@ -26,7 +26,6 @@ public class TakeUserInput : MonoBehaviour {
 		camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() ; 
 		hasUserTouched = false ;
 		maxMagnitude = new Vector2( Screen.width , Screen.height ).magnitude ; 
-
 
 	}
 
