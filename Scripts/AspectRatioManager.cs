@@ -6,8 +6,8 @@ public class AspectRatioManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		float canvasWidth = this.GetComponent<RectTransform>().rect.width ; 
-		float canvasHeight = this.GetComponent<RectTransform>().rect.height ; 
+		float canvasWidth = MyCanvas.canvasWidth ;
+		float canvasHeight = MyCanvas.canvasHeight ;
 		float currentScreenWidth = 512f ;
 		float currentScreenHeight = 320f ; 
 		print( canvasWidth +"," +canvasHeight );

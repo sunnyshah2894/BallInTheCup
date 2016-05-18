@@ -3,12 +3,15 @@ using System.Collections;
 
 public class LevelCompletePanel : MonoBehaviour {
 
+	public static GameObject levelCompletePanelObj ;
+
 	/*
 	 * Resize the panel according to the screen size;
 	 * 
 	*/
 	void Start () {
-	
+		levelCompletePanelObj = GameObject.FindGameObjectWithTag( "levelCompleteScreen" ) ;
+		resizeLevelCompletePanel() ; 
 	}
 
 	/*
@@ -19,9 +22,15 @@ public class LevelCompletePanel : MonoBehaviour {
 	 */
 	public static void MoveInPanel( int noOfHogs , int timeTaken ){
 
-		Animator a = GameObject.FindGameObjectWithTag( "levelCompleteScreen" ).GetComponent<Animator>() ; 
+		Animator a = levelCompletePanelObj.GetComponent<Animator>() ; 
 		a.SetBool("movePanelIn", true);
 
+	}
+
+	public static void resizeLevelCompletePanel(){
+		print( "canvas width" + MyCanvas.canvasWidth*2 ) ; 
+		levelCompletePanelObj.transform.localPosition = new Vector3( MyCanvas.canvasWidth * 2 , 0 , 0f ) ;
+		print( levelCompletePanelObj.transform.position ) ; 
 	}
 
 }

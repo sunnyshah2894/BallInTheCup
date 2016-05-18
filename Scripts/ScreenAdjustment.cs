@@ -96,7 +96,7 @@ public class ScreenAdjustment : MonoBehaviour {
 		colliders["TopWall"].position = new Vector3(cameraPos.x, cameraPos.y + screenSize.y + (colliders["TopWall"].localScale.y * 0.5f), zPosition);
 		colliders["BottomWall"].position = new Vector3(cameraPos.x, cameraPos.y - screenSize.y - (colliders["BottomWall"].localScale.y * 0.5f), zPosition);
 
-		MyCamera.setWallObjects() ; 
+		//MyCamera.setWallObjects() ; 
 
 	}
 
