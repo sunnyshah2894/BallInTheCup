@@ -8,7 +8,7 @@ public class AspectRatioManager : MonoBehaviour {
 	
 		float canvasWidth = MyCanvas.canvasWidth ;
 		float canvasHeight = MyCanvas.canvasHeight ;
-		float currentScreenWidth = 512f ;
+		float currentScreenWidth = 520f ;
 		float currentScreenHeight = 320f ; 
 		print( canvasWidth +"," +canvasHeight );
 		foreach( Transform obj in transform ){
@@ -19,16 +19,38 @@ public class AspectRatioManager : MonoBehaviour {
 				float objWidth = obj.GetComponent<RectTransform>().rect.width ; 
 				float objHeight = obj.GetComponent<RectTransform>().rect.height ; 
 				print( obj.name + "::" + myLocation ) ; 
+
 				obj.transform.localPosition = new Vector3( ((myLocation.x)/currentScreenWidth) * ( canvasWidth ) ,((myLocation.y)/canvasHeight) * ( canvasHeight ) , 0f  ); 
-				//obj.transform.localScale *= canvasWidth/currentScreenWidth ; 
+
+
+				if( !"Glass".Equals( obj.tag ) ){
+
+					obj.GetComponent<RectTransform>().sizeDelta = new Vector2( obj.GetComponent<RectTransform>().rect.width * ( canvasWidth / currentScreenWidth ) , obj.GetComponent<RectTransform>().rect.height * ( canvasHeight / currentScreenHeight ) ) ; 
+
+					if( "Player".Equals( obj.tag ) ){
+						obj.GetComponent<RectTransform>().sizeDelta = new Vector2( obj.GetComponent<RectTransform>().rect.width * ( canvasWidth / currentScreenWidth ) , obj.GetComponent<RectTransform>().rect.width * ( canvasWidth / currentScreenWidth ) ) ; 
+						print( "setting radius as : " + ( ( obj.GetComponent<RectTransform>().rect.width * ( canvasWidth / currentScreenWidth )) / 2f ));
+						obj.GetComponent<CircleCollider2D>().radius = ( obj.GetComponent<RectTransform>().rect.width ) / 2f ; 
+					}
+
+				}
+				else{
+
+					obj.transform.localScale *= ( canvasWidth / currentScreenWidth ) ;
+
+
+				}
+
 				print( obj.name+ "::::::" + new Vector3( ((myLocation.x)/currentScreenWidth) * ( canvasWidth ) ,((myLocation.y)/currentScreenHeight) * ( canvasHeight ) , 0f  ) ); 
 
 			}
 
 		}
+		LevelCompletePanel.resizeLevelCompletePanel() ; 
+
 
 
 	}
-	
+
 
 }
