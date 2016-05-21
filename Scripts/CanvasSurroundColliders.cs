@@ -48,7 +48,7 @@ public class CanvasSurroundColliders : MonoBehaviour {
 		}
 
 		//chooseAppropriatePauseButton() ; 
-		MyCanvas.glass.GetComponent<Rigidbody2D>().isKinematic = false ; 
+		//MyCanvas.glass.GetComponent<Rigidbody2D>().isKinematic = false ; 
 
 	}
 
