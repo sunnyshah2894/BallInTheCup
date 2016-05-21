@@ -13,17 +13,18 @@ public class AspectRatioManager : MonoBehaviour {
 		print( canvasWidth +"," +canvasHeight );
 		foreach( Transform obj in transform ){
 
-			if( !("Boundary".Equals(obj.tag)) && !( "SlidingButton" ).Equals( obj.tag ) && !("SlidingButtonBig").Equals( obj.tag ) ){
+			if( !("Boundary".Equals(obj.tag)) /*&& !( "SlidingButton" ).Equals( obj.tag ) && !("SlidingButtonBig").Equals( obj.tag )*/ ){
 
 				Vector3 myLocation = obj.transform.localPosition ; 
 				float objWidth = obj.GetComponent<RectTransform>().rect.width ; 
 				float objHeight = obj.GetComponent<RectTransform>().rect.height ; 
 				print( obj.name + "::" + myLocation ) ; 
 
-				obj.transform.localPosition = new Vector3( ((myLocation.x)/currentScreenWidth) * ( canvasWidth ) ,((myLocation.y)/canvasHeight) * ( canvasHeight ) , 0f  ); 
+				if( !( "SlidingButton" ).Equals( obj.tag ) && !("SlidingButtonBig").Equals( obj.tag ) )
+					obj.transform.localPosition = new Vector3( ((myLocation.x)/currentScreenWidth) * ( canvasWidth ) ,((myLocation.y)/canvasHeight) * ( canvasHeight ) , 0f  ); 
 
 
-				if( !"Glass".Equals( obj.tag ) ){
+				/*if( !"Glass".Equals( obj.tag ) ){
 
 					obj.GetComponent<RectTransform>().sizeDelta = new Vector2( obj.GetComponent<RectTransform>().rect.width * ( canvasWidth / currentScreenWidth ) , obj.GetComponent<RectTransform>().rect.height * ( canvasHeight / currentScreenHeight ) ) ; 
 
@@ -34,12 +35,12 @@ public class AspectRatioManager : MonoBehaviour {
 					}
 
 				}
-				else{
+				else{*/
+				print(( canvasWidth / currentScreenWidth ));
+				obj.transform.localScale *= ( canvasWidth / currentScreenWidth ) ;
 
-					obj.transform.localScale *= ( canvasWidth / currentScreenWidth ) ;
 
-
-				}
+				//}
 
 				print( obj.name+ "::::::" + new Vector3( ((myLocation.x)/currentScreenWidth) * ( canvasWidth ) ,((myLocation.y)/currentScreenHeight) * ( canvasHeight ) , 0f  ) ); 
 

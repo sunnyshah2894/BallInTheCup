@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.SceneManagement;
+using DG.Tweening ; 
 
 public class MyEventManager : MonoBehaviour {
 
@@ -72,6 +73,12 @@ public class MyEventManager : MonoBehaviour {
 			colorSeparation = 0.1f
 		};
 		TransitionKit.instance.transitionWithDelegate( fishEye );
+
+	}
+
+	public void pauseGame(){
+
+		MyCanvas.pauseButton.transform.DOLocalMoveY( 192f, 0.3f , true ) ; 
 
 	}
 

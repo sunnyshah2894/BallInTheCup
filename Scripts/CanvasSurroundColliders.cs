@@ -47,28 +47,12 @@ public class CanvasSurroundColliders : MonoBehaviour {
 
 		}
 
-		chooseAppropriatePauseButton() ; 
+		//chooseAppropriatePauseButton() ; 
 		MyCanvas.glass.GetComponent<Rigidbody2D>().isKinematic = false ; 
 
 	}
 
-	public static void chooseAppropriatePauseButton(){
 
-		GameObject slidingButtonSmall = GameObject.FindGameObjectWithTag( "SlidingButton" );
-		GameObject slidingButtonBig = GameObject.FindGameObjectWithTag( "SlidingButtonBig" );
-
-		if( MyCanvas.canvasWidth > 900 && MyCanvas.canvasHeight >400 ){
-
-			Destroy(slidingButtonSmall);
-
-		}
-		else{
-
-			Destroy( slidingButtonBig );
-
-		}
-
-	}
 
 	public static void setWallObjects(){
 

@@ -43,7 +43,7 @@ public class CheckIfBallCaught : MonoBehaviour {
 	void FixedUpdate(){
 
 		if( HasBallEntered )timeEntered++ ; 
-		print(LevelCompletePanel.levelCompletePanelObj.transform.position);
+		//print(LevelCompletePanel.levelCompletePanelObj.transform.position);
 
 	}
 

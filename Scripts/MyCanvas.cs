@@ -8,5 +8,7 @@ public class MyCanvas{
 	public static float canvasWidth = canvasRectTransform.rect.width ; 
 	public static float canvasHeight = canvasRectTransform.rect.height ; 
 	public static GameObject glass = GameObject.FindGameObjectWithTag( "Glass" );
+	public static GameObject MyCamera = GameObject.FindGameObjectWithTag( "MainCamera" );
+	public static GameObject pauseButton = GameObject.FindGameObjectWithTag( "SlidingButton" );
 
 }

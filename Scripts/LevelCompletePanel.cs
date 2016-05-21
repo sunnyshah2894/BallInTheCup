@@ -30,7 +30,10 @@ public class LevelCompletePanel : MonoBehaviour {
 
 		//Animator a = levelCompletePanelObj.GetComponent<Animator>() ; 
 		//a.SetBool("movePanelIn", true);
-		levelCompletePanelObj.transform.DOMove( new Vector2(MyCanvas.canvasWidth/2 , MyCanvas.canvasHeight/2) , 1 ) ; 
+		print( "canvas width and size : " + MyCanvas.canvasWidth + " , " + MyCanvas.canvasHeight ) ; 
+		levelCompletePanelObj.transform.DOLocalMoveX( 0f , 1f , true ) ; 
+		print( "my levelCP : " + levelCompletePanelObj.transform.position ) ; 
+
 
 	}
 
@@ -38,6 +41,7 @@ public class LevelCompletePanel : MonoBehaviour {
 	public static void resizeLevelCompletePanel(){
 		print( "canvas width" + MyCanvas.canvasWidth*2 ) ; 
 		levelCompletePanelObj.transform.localPosition = new Vector3( MyCanvas.canvasWidth * 2 , 0 , 0f ) ;
+		levelCompletePanelObj.transform.localScale = new Vector3(1f,1f,1f); 
 		levelCompletePanelObj.GetComponent<RectTransform>().sizeDelta = new Vector2( MyCanvas.canvasWidth*( 0.7f ) , MyCanvas.canvasHeight*( 0.7f ) ) ; 
 
 		float canvasWidth = MyCanvas.canvasWidth*( 0.7f ) ;
